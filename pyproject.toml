@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sandbox-probe"
+version = "0.1.0"
+description = "Run escape probes against an agent sandbox (read outside the mount, environment secrets, direct network access, writes to read-only directories) and report whether the sandbox actually contains the agent."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Gang Ji" }]
+keywords = ["agents", "sandbox", "containment", "security", "coding-agents", "prompt-injection"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Security",
+    "Topic :: Software Development :: Testing",
+]
+
+[project.scripts]
+sandbox-probe = "sandbox_probe.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/gangjig/sandbox-probe"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
